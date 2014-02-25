@@ -1,0 +1,30 @@
+<html>
+<head> </head>
+<title></title>
+
+<body>
+<script type = "text/javascript" src = http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js> </script>
+<script>
+	
+
+
+$(function ()
+	{
+		$.getJSON("/myChat/chat_api.php?method=getAllUsers&jsoncallback=?",
+		 function (data)
+		{
+			
+			//console.log(data);	
+			for (aUser in data)
+			{
+				var user = data[aUser];
+				//console.log (user.Username + '       ' +user.Email);
+				document.write(user.Username + '  ' + user.Email) + '<br>';
+				
+			}
+		});
+			
+	});
+</script>
+</body>
+</html>

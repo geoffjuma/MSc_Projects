@@ -1,0 +1,24 @@
+<html>
+<title></title>
+<head></head>
+<body>
+<?php
+
+define ('SECRET', "s3cr3t"); # don't actually use this value
+ 
+function make_token() 
+{
+  $str = "";
+  for ($i=0; $i<7; $i++) $str .= rand_alphanumeric();
+  $pos = rand(0, 24);
+  $str .= chr(65 + $pos);
+  $token = $str . substr(md5($str . SECRET), $pos, 8);
+echo $token;
+}
+
+//echo $str;
+
+make_toke();
+?>
+</body>
+</html>
