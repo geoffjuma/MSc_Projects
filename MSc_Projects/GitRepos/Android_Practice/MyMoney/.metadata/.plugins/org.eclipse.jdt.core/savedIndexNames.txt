@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+/home/ashley/MyMoney/.metadata/.plugins/org.eclipse.jdt.core
+3524387361.index
+4239994078.index
+724495069.index

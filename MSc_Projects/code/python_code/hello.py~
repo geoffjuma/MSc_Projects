@@ -1,0 +1,8 @@
+#!/usr/bin/python
+
+myDict = { 'FirstName': 'John' , 'secondName': 'Juma', 'Dept':'CSS' }
+
+
+print myDict.keys       # Prints complete list
+print myDict.values       # Prints first element of the list
+

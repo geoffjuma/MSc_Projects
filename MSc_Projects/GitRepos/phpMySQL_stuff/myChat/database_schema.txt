@@ -1,0 +1,49 @@
+
+CREATE TABLE User
+(
+UserID INT NOT NULL AUTO_INCREMENT, 
+PRIMARY KEY(UserID),
+FirstName VARCHAR,
+Password VARCHAR NOT NULL,
+Email VARCHAR NOT NULL,
+Status INT)
+);
+
+CREATE TABLE Message
+(
+MessageID INT NOT NULL AUTO_INCREMENT, 
+PRIMARY KEY(MessageID),
+Message TEXT,
+UserID INT,
+Sender VARCHAR,
+Reciever VARCHAR,
+SendTime DATETIME,
+FOREIGN KEY(UserID) references User(UserID),
+DestinationType ENUM ('User','Group')
+);
+
+CREATE TABLE Group
+(
+GroupID INT NOT NULL AUTO_INCREMENT, 
+PRIMARY KEY(GroupID),
+GroupName VARCHAR(60)
+);
+
+CREATE TABLE Group
+(
+GroupID INT, 
+UserID INT,
+FOREIGN KEY (UserID) references User (UserID),
+FOREIGN KEY (GroupID) references Group (GroupID)
+);
+
+CREATE TABLE Sessions
+(
+SessionID INT NOT NULL AUTO_INCREMENT,
+UserID INT,
+Token VARCHAR(60)
+PRIMARY KEY (SessionID),
+FOREIGN KEY (UserID) REFERENCES User (UserID)
+);
+
+

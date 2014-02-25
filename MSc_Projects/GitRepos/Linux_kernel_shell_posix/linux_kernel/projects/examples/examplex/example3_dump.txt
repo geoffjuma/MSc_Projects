@@ -1,0 +1,170 @@
+@ This file is part of the examples for the Intro to ARM course.
+@ For educational use as part of the Intro to ARM course at http://www.opensecuritytraining.info/IntroARM.html .
+
+example3:     file format elf32-littlearm
+
+
+Disassembly of section .init:
+
+000082c0 <_init>:
+    82c0:	b508      	push	{r3, lr}
+    82c2:	f000 f843 	bl	834c <call_gmon_start>
+    82c6:	bf00      	nop
+    82c8:	bd08      	pop	{r3, pc}
+
+Disassembly of section .plt:
+
+000082cc <.plt>:
+    82cc:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+    82d0:	e59fe004 	ldr	lr, [pc, #4]	; 82dc <_init+0x1c>
+    82d4:	e08fe00e 	add	lr, pc, lr
+    82d8:	e5bef008 	ldr	pc, [lr, #8]!
+    82dc:	00008d24 	.word	0x00008d24
+    82e0:	e28fc600 	add	ip, pc, #0
+    82e4:	e28cca08 	add	ip, ip, #32768	; 0x8000
+    82e8:	e5bcfd24 	ldr	pc, [ip, #3364]!	; 0xd24
+    82ec:	e28fc600 	add	ip, pc, #0
+    82f0:	e28cca08 	add	ip, ip, #32768	; 0x8000
+    82f4:	e5bcfd1c 	ldr	pc, [ip, #3356]!	; 0xd1c
+    82f8:	4778      	bx	pc
+    82fa:	46c0      	nop			; (mov r8, r8)
+    82fc:	e28fc600 	add	ip, pc, #0
+    8300:	e28cca08 	add	ip, ip, #32768	; 0x8000
+    8304:	e5bcfd10 	ldr	pc, [ip, #3344]!	; 0xd10
+    8308:	e28fc600 	add	ip, pc, #0
+    830c:	e28cca08 	add	ip, ip, #32768	; 0x8000
+    8310:	e5bcfd08 	ldr	pc, [ip, #3336]!	; 0xd08
+
+Disassembly of section .text:
+
+00008314 <_start>:
+    8314:	f04f 0b00 	mov.w	fp, #0
+    8318:	f04f 0e00 	mov.w	lr, #0
+    831c:	f85d 1b04 	ldr.w	r1, [sp], #4
+    8320:	466a      	mov	r2, sp
+    8322:	f84d 2d04 	str.w	r2, [sp, #-4]!
+    8326:	f84d 0d04 	str.w	r0, [sp, #-4]!
+    832a:	f8df c014 	ldr.w	ip, [pc, #20]	; 8340 <_start+0x2c>
+    832e:	f84d cd04 	str.w	ip, [sp, #-4]!
+    8332:	4804      	ldr	r0, [pc, #16]	; (8344 <_start+0x30>)
+    8334:	4b04      	ldr	r3, [pc, #16]	; (8348 <_start+0x34>)
+    8336:	f7ff efda 	blx	82ec <_init+0x2c>
+    833a:	f7ff efe6 	blx	8308 <_init+0x48>
+    833e:	0000      	.short	0x0000
+    8340:	00008441 	.word	0x00008441
+    8344:	0000838d 	.word	0x0000838d
+    8348:	000083fd 	.word	0x000083fd
+
+0000834c <call_gmon_start>:
+    834c:	4b03      	ldr	r3, [pc, #12]	; (835c <call_gmon_start+0x10>)
+    834e:	4a04      	ldr	r2, [pc, #16]	; (8360 <call_gmon_start+0x14>)
+    8350:	447b      	add	r3, pc
+    8352:	589b      	ldr	r3, [r3, r2]
+    8354:	b10b      	cbz	r3, 835a <call_gmon_start+0xe>
+    8356:	f7ff bfcf 	b.w	82f8 <_init+0x38>
+    835a:	4770      	bx	lr
+    835c:	00008cac 	.word	0x00008cac
+    8360:	0000001c 	.word	0x0000001c
+
+00008364 <__do_global_dtors_aux>:
+    8364:	4b02      	ldr	r3, [pc, #8]	; (8370 <__do_global_dtors_aux+0xc>)
+    8366:	781a      	ldrb	r2, [r3, #0]
+    8368:	b90a      	cbnz	r2, 836e <__do_global_dtors_aux+0xa>
+    836a:	2201      	movs	r2, #1
+    836c:	701a      	strb	r2, [r3, #0]
+    836e:	4770      	bx	lr
+    8370:	00011028 	.word	0x00011028
+
+00008374 <frame_dummy>:
+    8374:	4803      	ldr	r0, [pc, #12]	; (8384 <frame_dummy+0x10>)
+    8376:	b508      	push	{r3, lr}
+    8378:	6803      	ldr	r3, [r0, #0]
+    837a:	b113      	cbz	r3, 8382 <frame_dummy+0xe>
+    837c:	4b02      	ldr	r3, [pc, #8]	; (8388 <frame_dummy+0x14>)
+    837e:	b103      	cbz	r3, 8382 <frame_dummy+0xe>
+    8380:	4798      	blx	r3
+    8382:	bd08      	pop	{r3, pc}
+    8384:	00010f14 	.word	0x00010f14
+    8388:	00000000 	.word	0x00000000
+
+0000838c <main>:
+    838c:	b580      	push	{r7, lr}
+    838e:	b084      	sub	sp, #16
+    8390:	af00      	add	r7, sp, #0
+    8392:	f06f 0305 	mvn.w	r3, #5
+    8396:	60fb      	str	r3, [r7, #12]
+    8398:	f04f 0302 	mov.w	r3, #2
+    839c:	60bb      	str	r3, [r7, #8]
+    839e:	68f8      	ldr	r0, [r7, #12]
+    83a0:	68b9      	ldr	r1, [r7, #8]
+    83a2:	f000 f81f 	bl	83e4 <divide>
+    83a6:	6078      	str	r0, [r7, #4]
+    83a8:	f248 4350 	movw	r3, #33872	; 0x8450
+    83ac:	f2c0 0300 	movt	r3, #0
+    83b0:	4618      	mov	r0, r3
+    83b2:	6879      	ldr	r1, [r7, #4]
+    83b4:	f7ff ef94 	blx	82e0 <_init+0x20>
+    83b8:	68ba      	ldr	r2, [r7, #8]
+    83ba:	68bb      	ldr	r3, [r7, #8]
+    83bc:	4610      	mov	r0, r2
+    83be:	4619      	mov	r1, r3
+    83c0:	f000 f816 	bl	83f0 <unsigneddivide>
+    83c4:	6078      	str	r0, [r7, #4]
+    83c6:	f248 4360 	movw	r3, #33888	; 0x8460
+    83ca:	f2c0 0300 	movt	r3, #0
+    83ce:	4618      	mov	r0, r3
+    83d0:	6879      	ldr	r1, [r7, #4]
+    83d2:	f7ff ef86 	blx	82e0 <_init+0x20>
+    83d6:	f04f 0300 	mov.w	r3, #0
+    83da:	4618      	mov	r0, r3
+    83dc:	f107 0710 	add.w	r7, r7, #16
+    83e0:	46bd      	mov	sp, r7
+    83e2:	bd80      	pop	{r7, pc}
+
+000083e4 <divide>:
+    83e4:	e710f110 	sdiv	r0, r0, r1
+    83e8:	e12fff1e 	bx	lr
+    83ec:	e1a00000 	nop			; (mov r0, r0)
+
+000083f0 <unsigneddivide>:
+    83f0:	e730f110 	udiv	r0, r0, r1
+    83f4:	e12fff1e 	bx	lr
+    83f8:	e1a00000 	nop			; (mov r0, r0)
+
+000083fc <__libc_csu_init>:
+    83fc:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+    8400:	4606      	mov	r6, r0
+    8402:	f8df 9034 	ldr.w	r9, [pc, #52]	; 8438 <__libc_csu_init+0x3c>
+    8406:	460f      	mov	r7, r1
+    8408:	4d0c      	ldr	r5, [pc, #48]	; (843c <__libc_csu_init+0x40>)
+    840a:	4690      	mov	r8, r2
+    840c:	44f9      	add	r9, pc
+    840e:	f7ff ff57 	bl	82c0 <_init>
+    8412:	447d      	add	r5, pc
+    8414:	ebc5 0909 	rsb	r9, r5, r9
+    8418:	ea5f 09a9 	movs.w	r9, r9, asr #2
+    841c:	d009      	beq.n	8432 <__libc_csu_init+0x36>
+    841e:	2400      	movs	r4, #0
+    8420:	f855 3b04 	ldr.w	r3, [r5], #4
+    8424:	4630      	mov	r0, r6
+    8426:	4639      	mov	r1, r7
+    8428:	4642      	mov	r2, r8
+    842a:	3401      	adds	r4, #1
+    842c:	4798      	blx	r3
+    842e:	454c      	cmp	r4, r9
+    8430:	d1f6      	bne.n	8420 <__libc_csu_init+0x24>
+    8432:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+    8436:	bf00      	nop
+    8438:	00008b00 	.word	0x00008b00
+    843c:	00008af6 	.word	0x00008af6
+
+00008440 <__libc_csu_fini>:
+    8440:	4770      	bx	lr
+    8442:	bf00      	nop
+
+Disassembly of section .fini:
+
+00008444 <_fini>:
+    8444:	b508      	push	{r3, lr}
+    8446:	bf00      	nop
+    8448:	bd08      	pop	{r3, pc}

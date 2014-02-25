@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Kenyan Rants</title>
+		<meta name="keywords" content="clean blog post, 2-column, multi-level, comments, html css layout" />
+		<meta name="description" content="Clean Blog Post with multi-level commenting" />
+		<link href="/static/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+		 <div id = "footer">
+		 </div>
+	</head>
+
+<body>
+	<div id="templatemo_wrapper">
+	<div id="templatemo_left_column">
+        <div id="templatemo_header">        
+            <div id="site_title">
+                <h1><a href="http://www.templatemo.com" target="_parent">The <strong>Conversations<strong></a></h1>
+            </div><!-- end of site_title -->
+        </div> <!-- end of header -->  
+
+        <div id="templatemo_sidebar">
+            <div id="templatemo_rss">
+                <!-- this is where imma pu the rss feed -->
+
+                
+            </div>
+
+
+            <h4>Categories</h4>
+            <ul class="templatemo_list">
+                <li><a href="http://www.templatemo.com/page/1" target="_parent">Politics</a></li>
+                <li><a href="http://www.templatemo.com/page/2" target="_parent">Developmental Economics</a></li>
+                <li><a href="http://www.templatemo.com/page/3" target="_parent">Business and Commerce</a></li>
+                <li><a href="http://www.templatemo.com/page/4" target="_parent">Local Celebs</a></li>
+                <li><a href="#">Pure Rants</a></li>
+            </ul>
+
+            
+            <div class="cleaner_h40">
+	    </div>
+            <h4>Friends</h4>
+            <ul class="templatemo_list"> 
+		<!-- Googles maps api hapa -->
+            </ul>
+
+            
+        </div> <!-- end of templatemo_sidebar --> 
+    </div> <!-- end of templatemo_left_column -->
+
+    
+
+    <div id="templatemo_right_column">
+        <div id="templatemo_main">
+        <h1></h1>
+	<h1></h1>
+	<h1></h1>
+
+            <div class="post_section">
+            <a href="http://www.templatemo.com/page/1" target="_parent"><img src="/static/images/images/templatemo_image_01.jpg" alt="image" /></a>                
+                  {%for post in object_list %}
+              <p>{{ post.date|date:"Y-m-d"}}<a href = "/kenyan_rants/{{post.id}}"> {{post.title}}</a></p>
+                {% endfor%}
+        </div>
+
+            <div class="post_section">
+	{%block content%}
+
+	{% endblock %}
+
+	     </div>
+
+            
+
+            <div class="comment_tab">
+
+           	    Comments         
+	    </div>
+                 
+                                   
+  <div class="cleaner"></div>
+
+  </div> 
+
+    <!-- end of templatemo_main -->
+
+  <div class="cleaner_h20">
+  </div>
+  	<div id="templatemo_footer">
+		Copyright © 2014 <a href="#">Tallnet Sys,.inc</a> |       
+    </div>
+    <div class="cleaner">
+    </div>
+
+</div> <!-- end of warpper -->
+</html>
+
